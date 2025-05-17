@@ -12,7 +12,7 @@ const Navbar = () => {
                        border-2 border-white/30
                        text-white rounded-3xl 
                        flex items-center justify-between px-6 shadow-lg shadow-blue-500/10">
-     <img className='logo h-11 ml-10 opacity-60' src="/Images/logo.png" alt="logo"  />
+     <Link href='/'><img className='logo h-11 ml-10 opacity-60' src="/Images/logo.png" alt="logo"  /></Link>
 
        <div className=' gap-10  font-bold text-white w-full flex items-center justify-end mr-20'> 
 
