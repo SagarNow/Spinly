@@ -8,7 +8,7 @@ const page = () => {
         <div className="absolute inset-0 bg-blue-900/10 backdrop-blur-sm z-10"></div>
       
         <div className='absolute  min-h-screen px-4 z-10 h-screen w-screen gap-10 flex flex-col items-center justify-center select-none'>
-                        <h1 className=" text-6xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent drop-shadow-md text-center opacity-60
+                        <h1 className=" text-6xl font-extrabold bg-gradient-to-r from-pink-600 via-red-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-md text-center opacity-60
 ">
    {/*  bg-clip-text  means text will be visible only on the background color  hue hue nice sexy */}
 {/* drop-shadow-md means shadow will be visible only on the background color */}
