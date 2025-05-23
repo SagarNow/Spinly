@@ -2,32 +2,45 @@ import React from 'react'
 import Link from 'next/link'
 const Main = () => {
   return (
-    <div className="min-h-screen relative bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white 
+<div className="min-h-screen bg-gradient-to-br from-[#1e1e2f] via-[#252539] to-[#2c2c44] text-white flex flex-col justify-center items-center px-6 ">
+      
+      
+
+      {/* Hook */}
+
+      <h2 className="text-4xl md:text-6xl font-bold text-center mb-4 mt-25">
+        Too many tasks?<br />Let the wheel decide.
+      </h2>
+
+     
+      <p className="text-gray-300 max-w-xl text-center mb-8 text-lg ">
+        Stop overthinking. Add your tasks, spin the wheel, and let Spinly choose what's next.
+      </p>
+
     
-    flex
-    flex-col
-    items-center
-    justify-center
-
-    ">
-        <div className='z-10 gap-5 flex flex-col items-center justify-center'>
-   <h1 className=' opacity-40  text-[100px] font-bold z-100'> Kyon nahi ho rhi <span className='text-[#00fff7]'>padhai?</span></h1>
-   <h1 className=' opacity-40  text-[20px] underline decoration-[#00fff7] decoration-2'>Too many tasks, not enough focus? Don’t overthink it.Add your tasks, spin the wheel, and let it decide what to do next. Just take the first step</h1>
-   </div>
-<div className='mt-30'>
-   <Link href="/" className="mt-5 px-10 py-2 border-3  hover:scale-105  duration-200 border-white/30 rounded-2xl bg-white/20 hover:bg-white/40 duration-200 hover:scale-105 z-100  ">Get Started</Link>
-   </div>
-
-     <h1 className=' absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[200px] opacity-1 font-bold z-10 select-none flex '>Spinly</h1>
-  
-     
-     
-  
+      <div className="flex gap-4 mt-11">
+        <Link
+          href="/spin"
+          className="px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-medium transition"
+        >
+          Spin Now
+        </Link>
+        <Link
+          href="/about"
+          className="px-6 py-3 border border-white/30 hover:bg-white/10 rounded-lg font-medium transition"
+        >
+          Learn More
+        </Link>
+      </div> 
+      {/* Subtle icon / image */}
+{/*       
+      <div className="mt-16 opacity-30">
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-20 h-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 4v16m8-8H4" />
+        </svg>
+      </div> */}
     </div>
   )
 }
 
 export default Main
-
-
-
