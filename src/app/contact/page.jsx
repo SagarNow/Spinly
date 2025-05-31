@@ -7,7 +7,7 @@ const page = () => {
 
 "
     >
-      <div
+       <div
         className=" h-115 w-full  flex items-center justify-center flex-col gap-2   backdrop-blur-md bg-[#1c1c2b]
                       
                        border-2 border-white/30
@@ -18,7 +18,7 @@ const page = () => {
           Get in Touch
         </h1>
 
-        {/* ---------------------------------------------------------------------------------------------- */}
+
         <div className="grid grid-cols-2 gap-25 z-10 items-center justify-center  ">
           <div className="h-80 w-full ">
             <h1 className="text-[18px] font-extrabold z-100 flex items-center justify-center mt-7">
@@ -64,9 +64,9 @@ const page = () => {
           <div className="h-80 w-full  flex justify-center flex-col gap-5 ">
           
           <form action="" className=" flex flex-col gap-5"> 
-            <input type="text" placeholder="Your Name" className="border-2 border-white/30 p-2 rounded-md" />
-            <input type="email" placeholder="Your Email" className="border-2 border-white/30 p-2 rounded-md" />
-            <textarea  rows="4" placeholder="Your Message" className="border-2 border-white/30 p-2 rounded-md w-full "></textarea>
+            <input type="text" placeholder="Your Name" className="border-2 border-white/30 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 duration-200" />
+            <input type="email" placeholder="Your Email" className="border-2 border-white/30 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 duration-200" />
+            <textarea  rows="4" placeholder="Your Message" className="border-2 border-white/30 p-2 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-purple-500 duration-200"></textarea>
             <button type="submit" className="bg-white/20 hover:bg-white/40 duration-200 w-50  py-2 rounded-md">Send Message</button>
           </form>
 
@@ -77,6 +77,7 @@ const page = () => {
       </div>
 
     
+ 
 
 
 
@@ -84,9 +85,8 @@ const page = () => {
 
 
 
-
-
-      {/* 
+{/* 
+      
   <div className="bg-[#0f0c29] text-white py-16 px-6 md:px-20" id="contact">
 
     <h2 className="text-4xl font-bold text-center mb-10">Get in Touch</h2>
@@ -95,14 +95,44 @@ const page = () => {
       
       
       <div>
-        <p className="mb-6 text-lg">
-          Got a project or idea? Let’s connect and make something great together.
-        </p>
-        <ul className="space-y-4">
-          <li><strong>Email:</strong> <a href="mailto:sagar@example.com" className="text-blue-400 hover:underline">sagar@example.com</a></li>
-          <li><strong>Phone:</strong> +91 98765 43210</li>
-          <li><strong>Location:</strong> India, Earth 🌍</li>
-        </ul>
+      <h1 className="text-[18px] font-bold z-100 flex items-center justify-center mt-7">
+              {" "}
+              Got a project or idea? Let’s connect and make something great
+              together.
+            </h1>
+            <ul className="gap-5 flex flex-col mt-7 ml-7">
+              <li>
+                Email :{" "}
+                <Link
+                  href="mailto:sagaronlyy@gmail.com"
+                  className="text-blue-400 hover:underline"
+                >
+                  sagaronlyy@gmail.com
+                </Link>
+              </li>
+              <li>
+                linkedin :{" "}
+                <Link
+                  href="https://www.linkedin.com/in/mrsagarsingh"
+                  className="text-blue-400 hover:underline"
+                >
+                  @Mrsagarsingh
+                </Link>
+              </li>
+
+              <li>
+                github :{" "}
+                <Link
+                  href="https://github.com/SagarNow"
+                  className="text-blue-400 hover:underline"
+                >
+                  @SagarNow
+                </Link>
+              </li>
+              <li>
+                Location :<strong> Nagaur,Rajasthan,India, Earth 🌍</strong>
+              </li>
+            </ul>
       </div>
 
      
@@ -116,7 +146,10 @@ const page = () => {
       </form>
 
     </div>
-  </div> */}
+  </div>  */}
+
+
+
     </div>
   );
 };
