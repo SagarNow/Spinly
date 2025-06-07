@@ -9,7 +9,7 @@ const Main = () => {
       {/* Hook */}
 
       <h2 className="text-4xl md:text-6xl font-bold text-center mb-4 mt-25">
-        Too many tasks?<br />Let the wheel decide.
+        Too many tasks?<br />Let the <span className='text-cyan-500'>wheel</span> decide.
       </h2>
 
      
