@@ -8,8 +8,8 @@ const Main = () => {
 
       {/* Hook */}
 
-      <h2 className="text-4xl md:text-6xl font-bold text-center mb-4 mt-25">
-        Too many tasks?<br />Let the <span className='text-cyan-500'>wheel</span> decide.
+      <h2 className="text-4xl md:text-6xl font-bold text-center mb-10 mt-25 capitalize leading-[1.2]">
+        Too many <span className='underline '>Tasks?</span><br />Let the <span className='text-cyan-500'>wheel</span> decide.
       </h2>
 
      
