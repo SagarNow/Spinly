@@ -1,6 +1,6 @@
 # Decido
-
-**Decido — Spin to Decide**  
+ 
+**Decido - Spin to Decide**  
 A focused decision-making studio and anti-procrastination engine built for people who overthink their tasks.
 
 ---

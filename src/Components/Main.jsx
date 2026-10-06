@@ -240,7 +240,7 @@ export default function Main() {
           <p className="mt-6 text-slate-400 text-base leading-relaxed max-w-xl">
             Every morning you open your list and freeze. You re-read every item,
             shuffle priorities, and 20 minutes later you haven't started anything.
-            That's not a productivity problem — that's a <em className="text-slate-300 not-italic font-semibold">decision problem</em>.
+            That's not a productivity problem - that's a <em className="text-slate-300 not-italic font-semibold">decision problem</em>.
             Decido removes the friction so you can immediately lock in.
           </p>
         </Reveal>
@@ -252,7 +252,7 @@ export default function Main() {
               { value: '30m', sub: 'wasted daily just choosing what to work on first' },
               { value: '< 3s', sub: 'is all Decido needs to make the definitive call' },
               { value: '25m', sub: 'deep focus block kicks in directly after the spin' },
-              { value: '0', sub: 'willpower burned on prioritizing — save it for doing' },
+              { value: '0', sub: 'willpower burned on prioritizing - save it for doing' },
             ].map(({ value, sub }) => (
               <div
                 key={value}

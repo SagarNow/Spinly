@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Decido — Spin to Decide",
+  title: "Decido - Spin to Decide",
   description: "The anti-procrastination decision engine. Stop overthinking, add your tasks, spin the wheel or flip a coin, and crush your goals with voice-guided Pomodoro focus sprints. Built by Sagar.",
   keywords: [
     "Decido",
@@ -42,7 +42,7 @@ export const metadata = {
     apple: '/logo.svg?v=3',
   },
   openGraph: {
-    title: "Decido — Spin to Decide",
+    title: "Decido - Spin to Decide",
     description: "The anti-procrastination decision engine with physics wheel, 3D coin flip, and voice-guided Pomodoro focus sprints.",
     siteName: "Decido",
     locale: "en_US",
@@ -50,7 +50,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Decido — Spin to Decide",
+    title: "Decido - Spin to Decide",
     description: "Eliminate decision paralysis. Spin the wheel and lock in with voice-guided Pomodoro focus blocks.",
     creator: "@mrsagarsingh",
   },
@@ -62,8 +62,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#070913] text-slate-100 min-h-screen flex flex-col select-none`}
       >
         <Navbar />

@@ -1587,7 +1587,7 @@ export default function SpinWheel() {
             ) : tasks.length === 0 ? (
               <>
                 <Flame className="w-4 h-4 text-slate-500" />
-                Wheel is empty — Add tasks from left
+                Wheel is empty - Add tasks from left
               </>
             ) : tasks.length === 1 ? (
               <>
