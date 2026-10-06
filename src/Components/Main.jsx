@@ -458,6 +458,7 @@ export default function Main() {
               />
               <Link
                 href="/spin"
+                prefetch={true}
                 className="group relative inline-flex items-center gap-3 px-9 py-4 rounded-full text-base font-black text-white hover:brightness-110 active:brightness-95 transition"
                 style={{
                   background: 'linear-gradient(135deg, #7c3aed, #0891b2, #db2777)',

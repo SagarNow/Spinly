@@ -29,10 +29,20 @@
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-tap-highlight-color: transparent;
+    /* Prevent layout jank */
+    overscroll-behavior: none;
   }
 
-  button, a, input, select, textarea {
+  /* Instant pointer feedback — no 300ms tap delay on mobile */
+  button, a, input, select, textarea, [role="button"] {
     touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Buttons feel snappy with GPU layer */
+  button, a {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   input, textarea, [contenteditable="true"] {

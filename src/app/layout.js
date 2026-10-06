@@ -34,12 +34,9 @@ export const metadata = {
   creator: "Sagar",
   publisher: "Decido",
   icons: {
-    icon: [
-      { url: '/logo.svg?v=3', type: 'image/svg+xml' },
-      { url: '/icon.svg?v=3', type: 'image/svg+xml' }
-    ],
-    shortcut: '/logo.svg?v=3',
-    apple: '/logo.svg?v=3',
+    icon: { url: '/logo.svg', type: 'image/svg+xml' },
+    shortcut: '/logo.svg',
+    apple: '/logo.svg',
   },
   openGraph: {
     title: "Decido - Spin to Decide",
