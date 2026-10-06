@@ -17,8 +17,10 @@ Decido removes the friction of choosing. Put in your tasks, spin the wheel (or f
 
 - **Decision Wheel Studio (`/spin`)**
   - High-performance HTML5 Canvas wheel with custom slice calculations, color palettes, and realistic deceleration inertia.
-  - Dynamic option management: add, remove, weighted probabilities, and custom label presets.
-  - Instant transition into a Pomodoro focus sprint once a task is selected, keeping your focus uninterrupted.
+  - Dynamic option management: add, remove, weighted probabilities, and custom label presets (Dev Sprint, Deep Study, Quick Wins).
+  - **Voice-Guided Pomodoro Sprints**: Direct handoff from wheel selection into 25m or 50m deep work blocks.
+  - **Interactive Voice Coach**: Natural vocal cues (Female / Male voice synthesis or Mute mode) announcing session kickoffs, break reminders, resume cues, and completion celebrations.
+  - Procedural chime harmonies synthesized via Web Audio API alongside speech prompts.
 
 - **3D Coin Flip Engine (`/flip`)**
   - CSS 3D transform coin with dynamic rotation physics and lighting.
@@ -30,8 +32,9 @@ Decido removes the friction of choosing. Put in your tasks, spin the wheel (or f
   - Milestone unlock system that tracks focus streaks, coin flips, and wheel spins.
   - 100% client-side privacy: all data stays inside your browser's `localStorage` with zero trackers.
 
-- **Design Philosophy**
+- **Design & SEO Architecture**
   - Dark mode first (`#030712` / `#05070f`) with glassmorphic cards and crisp slate accents.
+  - Comprehensive metadata and OpenGraph configuration for high search discoverability.
   - Modern typography and clean Lucide iconography throughout (no generic emojis).
   - Micro-interactions designed to feel responsive and tactile.
 
@@ -43,7 +46,7 @@ Decido removes the friction of choosing. Put in your tasks, spin the wheel (or f
 - **Library**: React 19
 - **Styling**: Tailwind CSS v4 + Vanilla CSS custom animations
 - **Icons**: Lucide React
-- **Audio**: Synthesized Web Audio API oscillators and gain nodes
+- **Audio & Speech**: Synthesized Web Audio API oscillators and native Web Speech API (`speechSynthesis`)
 - **Animations & Effects**: Canvas Confetti, HTML5 Canvas 2D
 
 ---

@@ -6,7 +6,7 @@ import { motion, useInView } from 'framer-motion'
 import {
   ArrowUpRight, ArrowDown, Zap, Timer, Trophy, Shuffle,
   RotateCw, ListPlus, Flame, CheckCircle2, Crosshair,
-  Sparkles, TrendingUp, Sliders, Coins, ArrowRight, Clock
+  Sparkles, TrendingUp, Sliders, Coins, ArrowRight, Clock, Mic
 } from 'lucide-react'
 
 // ─── Scroll-reveal wrapper ────────────────────────────────
@@ -308,7 +308,7 @@ export default function Main() {
                 icon: Zap,
                 badge: 'Execution Protocol',
                 title: 'Lock In & Crush It',
-                desc: 'Launch directly into the Pomodoro workspace. Focus for 25m or 50m with live timer hours tracking, subtasks, and zero multitasking.',
+                desc: 'Launch directly into the Pomodoro workspace. Focus for 25m or 50m with voice coach guidance (Female/Male), live hours tracking, and zero multitasking.',
                 accentGlow: 'from-pink-500/15 via-transparent to-transparent',
                 borderColor: 'border-pink-500/30',
                 iconColor: 'text-pink-400 bg-pink-500/10 border-pink-500/30'
@@ -379,11 +379,11 @@ export default function Main() {
                 pill: '60 FPS Motion'
               },
               {
-                icon: Clock,
-                tag: 'Time Boxing',
-                title: 'Live Focus Timer',
-                desc: 'Pomodoro timer with second-by-second live hour tracking. 25m, 50m, or custom duration blocks.',
-                pill: 'Accurate Hours'
+                icon: Mic,
+                tag: 'Voice Coach & Focus',
+                title: 'Voice-Guided Sprints',
+                desc: 'Pomodoro timer with motivational female/male voice guidance for session starts, breaks, and completions.',
+                pill: 'Voice Coach'
               },
               {
                 icon: TrendingUp,
