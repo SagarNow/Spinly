@@ -1,69 +1,97 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import Link from 'next/link'
-const Navbar = () => {
+import { usePathname } from 'next/navigation'
+import { Sparkles, Menu, X } from 'lucide-react'
+import SpinlyLogo from './SpinlyLogo'
+
+const NAV_LINKS = [
+  { name: 'Home', href: '/' },
+  { name: 'Wheel', href: '/spin', highlight: true },
+  { name: 'Coin Flip', href: '/flip' },
+  { name: 'Dashboard', href: '/dashboard' },
+  { name: 'About', href: '/about' }
+]
+
+export default function Navbar() {
+  const pathname = usePathname()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
+    <header className="fixed top-6 left-0 right-0 z-50 flex flex-col items-center px-4">
+      {/* Floating Rounded Pill Bar */}
+      <nav className="w-full max-w-2xl h-14 rounded-full glass-pill px-5 sm:px-7 flex items-center justify-between transition-all duration-300 border border-white/15 shadow-2xl shadow-indigo-950/40">
+        
+        {/* Brand Logo */}
+        <Link 
+          href="/" 
+          className="flex items-center gap-2.5 group cursor-pointer"
+        >
+          <SpinlyLogo className="w-7 h-7" animated={true} />
 
-   
-     <div className="fixed top-7 w-full z-50">
+          <span className="text-base font-black tracking-tight text-white group-hover:opacity-90">
+            Spinly<span className="text-cyan-400">.</span>
+          </span>
+        </Link>
 
-     <div className="mx-auto w-[90%] max-w-6xl h-16 
-                       backdrop-blur-md bg-white/10 
-                       ring-1 ring-white/30
-                       border-2 border-white/30
-                       text-white rounded-3xl 
-                       flex items-center justify-between px-6 shadow-lg shadow-blue-500/10">
-     <Link href='/'><img className='logo h-11 ml-10 opacity-60' src="/Images/logo.png" alt="logo"  /></Link>
+        {/* Navigation Links */}
+        <div className="hidden sm:flex items-center gap-1 bg-white/[0.04] p-1 rounded-full border border-white/10">
+          {NAV_LINKS.map((link) => {
+            const isActive = pathname === link.href
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`relative px-4 py-1 rounded-full text-xs font-semibold tracking-wide transition duration-200 flex items-center gap-1.5 ${
+                  isActive
+                    ? 'text-white bg-gradient-to-r from-cyan-500/25 to-purple-500/25 border border-cyan-400/40 shadow-sm shadow-cyan-500/10'
+                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                <span>{link.name}</span>
+                {link.highlight && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                )}
+              </Link>
+            )
+          })}
+        </div>
 
-       <div className=' gap-10  font-bold text-white w-full flex items-center justify-end mr-20'> 
+        {/* Mobile Hamburger Toggle */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="sm:hidden p-1.5 text-slate-300 hover:text-white rounded-full hover:bg-white/5 transition"
+          aria-label="Toggle navigation menu"
+        >
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
+      </nav>
 
-<Link href="/" className='hover:text-gray-400 duration-200 hover:scale-105'>Home</Link> 
-<Link href="/about" className='hover:text-gray-400 duration-200 hover:scale-105'>About</Link>
-<Link href="/portfolio" className='hover:text-gray-400 duration-200 hover:scale-105'>Portfolio</Link>
-<Link href="/contact" className='hover:text-gray-400 duration-200 hover:scale-105'>Contact</Link>
-
-<div className='ml-15'> <Link href="/login" className='hover:text-gray-400 duration-200 hover:scale-105'>login</Link></div>
-       </div>
-
-    </div>
-   </div>
-
-
-
-
-
-
-
-// {/* responsive */}
-
-// <div className="fixed top-7 w-full z-50">
-//   <div className="mx-auto w-[90%] max-w-6xl h-16 
-//                   px-4 sm:px-6 
-//                   backdrop-blur-md bg-white/10 
-//                   ring-1 ring-white/30
-//                   border-2 border-white/30
-//                   text-white rounded-3xl 
-//                   flex items-center justify-between 
-//                   shadow-lg shadow-blue-500/10">
-
-//     {/* Logo */}
-//     <img className="h-9 sm:h-10 opacity-60 shrink-0" src="/Images/logo.png" alt="logo" />
-
-//     {/* Links */}
-//     <div className="flex items-center gap-2 sm:gap-4 md:gap-6 text-xs sm:text-sm md:text-base font-semibold text-white whitespace-nowrap overflow-hidden">
-//       <Link href="/" className="hover:text-gray-400 duration-200 hover:scale-105">Home</Link>
-//       <Link href="/about" className="hover:text-gray-400 duration-200 hover:scale-105">About</Link>
-//       <Link href="/portfolio" className="hover:text-gray-400 duration-200 hover:scale-105">Portfolio</Link>
-//       <Link href="/contact" className="hover:text-gray-400 duration-200 hover:scale-105">Contact</Link>
-//       <Link href="/login" className="hover:text-gray-400 duration-200 hover:scale-105">Login</Link>
-//     </div>
-//   </div>
-// </div> 
-
-
-
-
-  
+      {/* Mobile Menu Pill Drawer */}
+      {mobileMenuOpen && (
+        <div className="sm:hidden mt-2 w-full max-w-xs rounded-2xl glass-pill p-3 flex flex-col gap-1.5 border border-white/15 shadow-2xl animate-in fade-in slide-in-from-top-3">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition ${
+                pathname === link.href
+                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/30'
+                  : 'text-slate-300 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              <span>{link.name}</span>
+              {link.highlight && (
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold uppercase">
+                  Active
+                </span>
+              )}
+            </Link>
+          ))}
+        </div>
+      )}
+    </header>
   )
-} 
-
-export default Navbar
+}

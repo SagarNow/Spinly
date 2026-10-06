@@ -1,28 +1,115 @@
-<!-- ## About Spinly -->
+# Spinly
 
-Welcome to **Spinly** — a simple yet powerful tool built to help you stop overthinking and start doing.
-
-We all have a list of tasks... and yet, we keep scrolling, delaying, procrastinating.  
-**Spinly flips the script**. You enter your tasks, spin the wheel, and let fate choose what you tackle first.
-
-No more "which task should I start with?"  
-No more decision fatigue.  
-Just action.
-
-Spinly is designed with clean focus, calming aesthetics, and a gentle push to help you take the next step.
+A focused decision-making studio and anti-procrastination engine built for people who overthink their tasks.
 
 ---
 
-### Why Spinly?
+### The Problem
 
-We often wait for motivation.  
-But what we really need is **momentum**.
+Decision fatigue kills momentum. You sit down with a to-do list, spend 20 minutes debating whether to fix a bug, reply to pending emails, or start a new feature, and end up opening Twitter instead.
 
-**Spinly helps you start** — and starting is everything.
+Spinly removes the friction of choosing. Put in your tasks, spin the wheel (or flip a coin for binary calls), and let the engine make the call. Once a choice is picked, Spinly locks you directly into a focused Pomodoro sprint so you execute immediately without second-guessing.
 
 ---
 
-### Built with ❤️ by Sagar
+### Key Modules
 
-A tool I wish I had when I felt stuck.  
-Now it's yours.
+- **Decision Wheel Studio (`/spin`)**
+  - High-performance HTML5 Canvas wheel with custom slice calculations, color palettes, and realistic deceleration inertia.
+  - Dynamic option management: add, remove, weighted probabilities, and custom label presets.
+  - Instant transition into a Pomodoro focus sprint once a task is selected, keeping your focus uninterrupted.
+
+- **3D Coin Flip Engine (`/flip`)**
+  - CSS 3D transform coin with dynamic rotation physics and lighting.
+  - Procedural sound synthesis using the native Web Audio API (air whoosh, wobble, and tactile table landing thud—no heavy MP3 files to download).
+  - Recent flips roll history with session counters and clear controls.
+
+- **Focus Analytics & Badges (`/dashboard`)**
+  - Real-time Pomodoro time accounting: logs actual elapsed seconds and hours spent in focus sessions rather than arbitrary completion clicks.
+  - Milestone unlock system that tracks focus streaks, coin flips, and wheel spins.
+  - 100% client-side privacy: all data stays inside your browser's `localStorage` with zero trackers.
+
+- **Design Philosophy**
+  - Dark mode first (`#030712` / `#05070f`) with glassmorphic cards and crisp slate accents.
+  - Modern typography and clean Lucide iconography throughout (no generic emojis).
+  - Micro-interactions designed to feel responsive and tactile.
+
+---
+
+### Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Library**: React 19
+- **Styling**: Tailwind CSS v4 + Vanilla CSS custom animations
+- **Icons**: Lucide React
+- **Audio**: Synthesized Web Audio API oscillators and gain nodes
+- **Animations & Effects**: Canvas Confetti, HTML5 Canvas 2D
+
+---
+
+### Getting Started
+
+#### Prerequisites
+- Node.js 18.18+ or later
+- npm, pnpm, or yarn
+
+#### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/SagarNow/Spinly.git
+   cd Spinly
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+### Project Structure
+
+```
+Spinly/
+├── src/
+│   ├── app/
+│   │   ├── about/          # Project backstory and methodology
+│   │   ├── dashboard/      # Focus stats, timers, and milestone badges
+│   │   ├── flip/           # 3D coin flip simulator
+│   │   ├── spin/           # Decision wheel studio and Pomodoro runner
+│   │   ├── layout.js       # Root layout, fonts, and global metadata
+│   │   └── page.js         # Interactive homepage and feature showcase
+│   ├── Components/
+│   │   ├── Footer.jsx      # Navigation footer
+│   │   ├── Main.jsx        # Landing hero and interactive preview modules
+│   │   ├── Navbar.jsx      # Sticky glass navbar
+│   │   ├── SpinWheel.jsx   # Canvas-based wheel physics engine
+│   │   └── SpinlyLogo.jsx  # Procedural vector spinner mark
+│   └── utils/
+│       ├── audio.js        # Web Audio API sound synthesis engine
+│       └── dashboardStore.js # LocalStorage state management and stats
+├── public/                 # Static assets, favicon, and brand icons
+└── package.json
+```
+
+---
+
+### Author
+
+Built by **Sagar**  
+- GitHub: [@SagarNow](https://github.com/SagarNow)  
+- LinkedIn: [Sagar Singh](https://www.linkedin.com/in/mrsagarsingh)
+
+---
+
+### License
+
+This project is open-source and available under the [MIT License](LICENSE).
