@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import SpinlyLogo from './SpinlyLogo'
+import DecidoLogo from './DecidoLogo'
 import { ArrowUpRight, ShieldCheck, Sparkles } from 'lucide-react'
 
 export default function Footer() {
@@ -19,9 +19,9 @@ export default function Footer() {
           {/* Col 1: Brand & Status (5 cols) */}
           <div className="md:col-span-5 flex flex-col gap-4">
             <Link href="/" className="inline-flex items-center gap-2.5 group cursor-pointer w-fit">
-              <SpinlyLogo className="w-8 h-8" animated={true} />
+              <DecidoLogo className="w-8 h-8" animated={true} />
               <span className="text-xl font-black text-white tracking-tight group-hover:opacity-90">
-                Spinly<span className="text-cyan-400">.</span>
+                Decido<span className="text-cyan-400">.</span>
               </span>
             </Link>
 
@@ -68,7 +68,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-2.5 text-xs text-slate-400 font-medium">
               <li>
                 <Link href="/about" className="hover:text-white transition">
-                  About Spinly
+                  About Decido
                 </Link>
               </li>
               <li>
@@ -120,7 +120,7 @@ export default function Footer() {
         {/* Bottom row */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <span className="font-mono text-[11px]">
-            &copy; {new Date().getFullYear()} Spinly. Built for focused minds. Zero overthinking.
+            &copy; {new Date().getFullYear()} Decido. Built for focused minds. Zero overthinking.
           </span>
           <span className="flex items-center gap-1.5 text-[11px]">
             Designed &amp; Developed by <strong className="text-slate-300 font-semibold">Sagar</strong>

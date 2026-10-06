@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
-import SpinlyLogo from '@/Components/SpinlyLogo'
+import DecidoLogo from '@/Components/DecidoLogo'
 import {
   Sparkles,
   Brain,
@@ -32,7 +32,7 @@ export default function AboutPage() {
       textColor: 'text-cyan-400',
       borderColor: 'group-hover:border-cyan-500/40',
       description:
-        'Cognitive time increases logarithmically with choice count. When you face 8 options, your brain stalls. Spinly reduces 8 options down to 1 in under 3 seconds.',
+        'Cognitive time increases logarithmically with choice count. When you face 8 options, your brain stalls. Decido reduces 8 options down to 1 in under 3 seconds.',
     },
     {
       icon: Shuffle,
@@ -50,7 +50,7 @@ export default function AboutPage() {
       textColor: 'text-pink-400',
       borderColor: 'group-hover:border-pink-500/40',
       description:
-        'Spinly doesn’t stop at picking a winner. It immediately presents a 25-minute Pomodoro sprint timer, converting decision momentum into immediate deep work.',
+        'Decido doesn’t stop at picking a winner. It immediately presents a 25-minute Pomodoro sprint timer, converting decision momentum into immediate deep work.',
     },
     {
       icon: ShieldCheck,
@@ -113,7 +113,7 @@ export default function AboutPage() {
           </h1>
 
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed">
-            Starting is everything. When you spend all your cognitive energy debating what to do, you have nothing left to actually execute. Spinly removes the friction of choice so you can jump straight into flow state.
+            Starting is everything. When you spend all your cognitive energy debating what to do, you have nothing left to actually execute. Decido removes the friction of choice so you can jump straight into flow state.
           </p>
 
           {/* Quick Metrics Bar */}
@@ -148,7 +148,7 @@ export default function AboutPage() {
             <div>
               <div className="flex items-center justify-between pb-5 border-b border-white/[0.08]">
                 <div className="flex items-center gap-2.5">
-                  <SpinlyLogo className="w-6 h-6" animated={true} />
+                  <DecidoLogo className="w-6 h-6" animated={true} />
                   <span className="text-xs font-mono font-bold tracking-wider text-slate-300 uppercase">Decision Protocol</span>
                 </div>
                 <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono font-medium">
@@ -180,7 +180,7 @@ export default function AboutPage() {
 
                 <div className="p-4 rounded-2xl bg-gradient-to-br from-cyan-950/40 via-indigo-950/30 to-purple-950/20 border border-cyan-500/20">
                   <div className="text-[11px] uppercase font-mono text-emerald-400 tracking-wider font-semibold mb-1 flex items-center justify-between">
-                    <span>The Spinly Method</span>
+                    <span>The Decido Method</span>
                     <Zap className="w-3.5 h-3.5 text-emerald-400" />
                   </div>
                   <p className="text-xs text-slate-200 leading-relaxed">
@@ -222,7 +222,7 @@ export default function AboutPage() {
                   When every task feels equally important or intimidating, your brain expends its energy on continuous evaluation instead of execution. You debate for 20 minutes, get mentally fatigued, and procrastinate.
                 </p>
                 <p>
-                  <strong>Spinly was built to short-circuit this loop.</strong> By delegating the decision to an unbiased wheel spin or a 3D coin flip, you strip away the burden of prioritization. Once the wheel selects a task, your job isn't to evaluate—it's just to start the timer and work.
+                  <strong>Decido was built to short-circuit this loop.</strong> By delegating the decision to an unbiased wheel spin or a 3D coin flip, you strip away the burden of prioritization. Once the wheel selects a task, your job isn't to evaluate—it's just to start the timer and work.
                 </p>
               </div>
             </div>
@@ -267,7 +267,7 @@ export default function AboutPage() {
         <div className="mb-20">
           <div className="text-center mb-10">
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              The Four Pillars of Spinly
+              The Four Pillars of Decido
             </h3>
             <p className="mt-2 text-sm text-slate-400 max-w-xl mx-auto">
               Engineered from behavioral psychology and built with modern web technologies.

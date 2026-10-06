@@ -24,9 +24,9 @@ const SEGMENT_COLORS = [
   { bg: '#4F46E5', bgDark: '#312E81', text: '#FFFFFF', glow: '#A5B4FC' }  // Deep Indigo
 ]
 
-const LS_DAILY_KEY = 'spinly_daily_tasks'
-const LS_WHEEL_KEY = 'spinly_wheel_tasks'
-const LS_COMPLETED_KEY = 'spinly_completed_tasks'
+const LS_DAILY_KEY = 'decido_daily_tasks'
+const LS_WHEEL_KEY = 'decido_wheel_tasks'
+const LS_COMPLETED_KEY = 'decido_completed_tasks'
 
 const DEFAULT_DAILY = ['Post on LinkedIn', 'Check & reply emails', 'Daily standup', 'Review PRs', '30m Workout']
 const OLD_DEFAULTS = ['Build Next Feature', 'Fix That Bug', 'Write Docs', '30m Deep Focus', 'Quick Walk']
@@ -96,9 +96,9 @@ export default function SpinWheel() {
   // ── Load saved data on mount ──
   useEffect(() => {
     try {
-      const daily = localStorage.getItem(LS_DAILY_KEY)
-      const wheel = localStorage.getItem(LS_WHEEL_KEY)
-      const completed = localStorage.getItem(LS_COMPLETED_KEY)
+      const daily = localStorage.getItem(LS_DAILY_KEY) || localStorage.getItem('spinly_daily_tasks')
+      const wheel = localStorage.getItem(LS_WHEEL_KEY) || localStorage.getItem('spinly_wheel_tasks')
+      const completed = localStorage.getItem(LS_COMPLETED_KEY) || localStorage.getItem('spinly_completed_tasks')
 
       if (daily) {
         const parsed = JSON.parse(daily)

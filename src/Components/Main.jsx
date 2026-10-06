@@ -241,7 +241,7 @@ export default function Main() {
             Every morning you open your list and freeze. You re-read every item,
             shuffle priorities, and 20 minutes later you haven't started anything.
             That's not a productivity problem — that's a <em className="text-slate-300 not-italic font-semibold">decision problem</em>.
-            Spinly removes the friction so you can immediately lock in.
+            Decido removes the friction so you can immediately lock in.
           </p>
         </Reveal>
 
@@ -250,7 +250,7 @@ export default function Main() {
           <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { value: '30m', sub: 'wasted daily just choosing what to work on first' },
-              { value: '< 3s', sub: 'is all Spinly needs to make the definitive call' },
+              { value: '< 3s', sub: 'is all Decido needs to make the definitive call' },
               { value: '25m', sub: 'deep focus block kicks in directly after the spin' },
               { value: '0', sub: 'willpower burned on prioritizing — save it for doing' },
             ].map(({ value, sub }) => (
@@ -464,7 +464,7 @@ export default function Main() {
                   boxShadow: '0 0 40px rgba(139,92,246,0.4), 0 0 80px rgba(6,182,212,0.2)',
                 }}
               >
-                Open Spinly
+                Launch Decido
                 <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </div>

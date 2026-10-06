@@ -21,7 +21,7 @@ import {
   getTodayDateString
 } from '@/utils/dashboardStore'
 
-const LS_DAILY_KEY = 'spinly_daily_tasks'
+const LS_DAILY_KEY = 'decido_daily_tasks'
 
 export default function DashboardPage() {
   const [stats, setStats] = useState(null)
@@ -48,7 +48,7 @@ export default function DashboardPage() {
     setWeeklyData(week)
 
     try {
-      const savedDaily = localStorage.getItem(LS_DAILY_KEY)
+      const savedDaily = localStorage.getItem(LS_DAILY_KEY) || localStorage.getItem('spinly_daily_tasks')
       if (savedDaily) {
         setDailyRoutines(JSON.parse(savedDaily))
       }

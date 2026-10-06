@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Spinly — Too Many Tasks? Let The Wheel Decide",
-  description: "The anti-procrastination decision wheel. Stop overthinking, add your tasks, spin the wheel, and crush your goals with focus blocks. Built by Sagar.",
+  title: "Decido — Spin to Decide",
+  description: "The anti-procrastination decision engine. Stop overthinking, add your tasks, spin the wheel or flip a coin, and crush your goals with focus blocks. Built by Sagar.",
   icons: {
     icon: "/logo.svg",
     shortcut: "/logo.svg",

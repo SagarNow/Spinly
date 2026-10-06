@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Sparkles, Menu, X } from 'lucide-react'
-import SpinlyLogo from './SpinlyLogo'
+import DecidoLogo from './DecidoLogo'
 
 const NAV_LINKS = [
   { name: 'Home', href: '/' },
@@ -28,10 +28,10 @@ export default function Navbar() {
           href="/" 
           className="flex items-center gap-2.5 group cursor-pointer"
         >
-          <SpinlyLogo className="w-7 h-7" animated={true} />
+          <DecidoLogo className="w-7 h-7" animated={true} />
 
           <span className="text-base font-black tracking-tight text-white group-hover:opacity-90">
-            Spinly<span className="text-cyan-400">.</span>
+            Decido<span className="text-cyan-400">.</span>
           </span>
         </Link>
 

@@ -1,5 +1,6 @@
-# Spinly
+# Decido
 
+**Decido — Spin to Decide**  
 A focused decision-making studio and anti-procrastination engine built for people who overthink their tasks.
 
 ---
@@ -8,7 +9,7 @@ A focused decision-making studio and anti-procrastination engine built for peopl
 
 Decision fatigue kills momentum. You sit down with a to-do list, spend 20 minutes debating whether to fix a bug, reply to pending emails, or start a new feature, and end up opening Twitter instead.
 
-Spinly removes the friction of choosing. Put in your tasks, spin the wheel (or flip a coin for binary calls), and let the engine make the call. Once a choice is picked, Spinly locks you directly into a focused Pomodoro sprint so you execute immediately without second-guessing.
+Decido removes the friction of choosing. Put in your tasks, spin the wheel (or flip a coin for binary calls), and let the engine make the call. Once a choice is picked, Decido locks you directly into a focused Pomodoro sprint so you execute immediately without second-guessing.
 
 ---
 
@@ -57,8 +58,8 @@ Spinly removes the friction of choosing. Put in your tasks, spin the wheel (or f
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/SagarNow/Spinly.git
-   cd Spinly
+   git clone https://github.com/SagarNow/Decido.git
+   cd Decido
    ```
 
 2. Install dependencies:
@@ -78,7 +79,7 @@ Spinly removes the friction of choosing. Put in your tasks, spin the wheel (or f
 ### Project Structure
 
 ```
-Spinly/
+Decido/
 ├── src/
 │   ├── app/
 │   │   ├── about/          # Project backstory and methodology

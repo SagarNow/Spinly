@@ -1,8 +1,23 @@
 // Utility for persistent productivity stats, focus tracking, and streak calculation
-const LS_STATS_KEY = 'spinly_dashboard_stats'
-const LS_COMPLETED_KEY = 'spinly_completed_tasks'
-const LS_SESSIONS_KEY = 'spinly_focus_sessions'
-const LS_DAILY_KEY = 'spinly_daily_tasks'
+const LS_STATS_KEY = 'decido_dashboard_stats'
+const LS_COMPLETED_KEY = 'decido_completed_tasks'
+const LS_SESSIONS_KEY = 'decido_focus_sessions'
+const LS_DAILY_KEY = 'decido_daily_tasks'
+
+// Backwards compatibility migration helper for legacy Spinly keys
+function getStoredItemWithFallback(key, oldKey) {
+  if (typeof window === 'undefined') return null
+  const current = localStorage.getItem(key)
+  if (current !== null) return current
+  const legacy = localStorage.getItem(oldKey)
+  if (legacy !== null) {
+    try {
+      localStorage.setItem(key, legacy)
+    } catch {}
+    return legacy
+  }
+  return null
+}
 
 export function getTodayDateString() {
   const now = new Date()
@@ -32,7 +47,7 @@ function getDefaultStats() {
 export function getDashboardStats() {
   if (typeof window === 'undefined') return getDefaultStats()
   try {
-    const raw = localStorage.getItem(LS_STATS_KEY)
+    const raw = getStoredItemWithFallback(LS_STATS_KEY, 'spinly_dashboard_stats')
     if (!raw) {
       const initial = getDefaultStats()
       localStorage.setItem(LS_STATS_KEY, JSON.stringify(initial))
@@ -57,7 +72,7 @@ export function saveDashboardStats(stats) {
 export function getCompletedTasksList() {
   if (typeof window === 'undefined') return []
   try {
-    const raw = localStorage.getItem(LS_COMPLETED_KEY)
+    const raw = getStoredItemWithFallback(LS_COMPLETED_KEY, 'spinly_completed_tasks')
     if (!raw) return []
     const parsed = JSON.parse(raw)
     return Array.isArray(parsed) ? parsed : []
@@ -69,7 +84,7 @@ export function getCompletedTasksList() {
 export function getFocusSessionsList() {
   if (typeof window === 'undefined') return []
   try {
-    const raw = localStorage.getItem(LS_SESSIONS_KEY)
+    const raw = getStoredItemWithFallback(LS_SESSIONS_KEY, 'spinly_focus_sessions')
     if (!raw) return []
     const parsed = JSON.parse(raw)
     return Array.isArray(parsed) ? parsed : []
