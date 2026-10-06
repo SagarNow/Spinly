@@ -207,3 +207,89 @@ export function playCoinLandSound(enabled = true) {
     // Ignore
   }
 }
+
+export function playFocusChime(enabled = true) {
+  if (!enabled) return;
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+
+    // Dual-tone harmonic crystal chime (D5 -> A5)
+    [587.33, 880.0].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now + i * 0.08);
+
+      gain.gain.setValueAtTime(0.001, now + i * 0.08);
+      gain.gain.linearRampToValueAtTime(0.18, now + i * 0.08 + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.08 + 0.8);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now + i * 0.08);
+      osc.stop(now + i * 0.08 + 0.85);
+    });
+  } catch {
+    // Ignore
+  }
+}
+
+export function speakCoachMessage(text, voiceMode = 'female') {
+  if (typeof window === 'undefined') return;
+  if (!voiceMode || voiceMode === 'off') return;
+  if (!('speechSynthesis' in window)) return;
+
+  try {
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    const voices = window.speechSynthesis.getVoices() || [];
+    const isFemale = voiceMode === 'female';
+
+    let matchedVoice = null;
+    if (isFemale) {
+      matchedVoice = voices.find(v =>
+        v.lang.startsWith('en') &&
+        (v.name.toLowerCase().includes('female') ||
+         v.name.toLowerCase().includes('zira') ||
+         v.name.toLowerCase().includes('samantha') ||
+         v.name.toLowerCase().includes('victoria') ||
+         v.name.toLowerCase().includes('karen') ||
+         v.name.toLowerCase().includes('google uk english female'))
+      );
+    } else if (voiceMode === 'male') {
+      matchedVoice = voices.find(v =>
+        v.lang.startsWith('en') &&
+        (v.name.toLowerCase().includes('male') ||
+         v.name.toLowerCase().includes('david') ||
+         v.name.toLowerCase().includes('alex') ||
+         v.name.toLowerCase().includes('daniel') ||
+         v.name.toLowerCase().includes('george') ||
+         v.name.toLowerCase().includes('google uk english male'))
+      );
+    }
+
+    if (!matchedVoice) {
+      matchedVoice = voices.find(v => v.lang.startsWith('en')) || voices[0];
+    }
+
+    if (matchedVoice) {
+      utterance.voice = matchedVoice;
+    }
+
+    if (isFemale) {
+      utterance.pitch = 1.15;
+      utterance.rate = 1.02;
+    } else {
+      utterance.pitch = 0.88;
+      utterance.rate = 0.98;
+    }
+
+    utterance.volume = 0.95;
+    window.speechSynthesis.speak(utterance);
+  } catch {
+    // Ignore speech errors
+  }
+}

@@ -6,9 +6,10 @@ import confetti from 'canvas-confetti'
 import {
   Play, Pause, RotateCcw, Volume2, VolumeX, Plus, Trash2, CheckCircle2,
   Sparkles, Shuffle, Timer, Trophy, X, Check, Flame, Zap,
-  ArrowLeft, AlertTriangle, CheckSquare, Square, CornerDownLeft, Sliders, Clock
+  ArrowLeft, AlertTriangle, CheckSquare, Square, CornerDownLeft, Sliders, Clock,
+  Mic, MicOff
 } from 'lucide-react'
-import { playTickSound, playWinnerFanfare, playButtonSound } from '@/utils/audio'
+import { playTickSound, playWinnerFanfare, playButtonSound, playFocusChime, speakCoachMessage } from '@/utils/audio'
 import { recordTaskCompletion, recordFocusSession, recordRealFocusTime } from '@/utils/dashboardStore'
 
 const SEGMENT_COLORS = [
@@ -50,6 +51,7 @@ export default function SpinWheel() {
   // ── Dedicated Active Focus Mode state ──
   const [focusTask, setFocusTask] = useState(null)
   const [pomodoroMode, setPomodoroMode] = useState('focus25') // 'focus25', 'deep50', 'break5', 'break15', 'custom'
+  const [voiceMode, setVoiceMode] = useState('female') // 'female' | 'male' | 'off'
   const [customMinutes, setCustomMinutes] = useState(20)
   const [showCustomPicker, setShowCustomPicker] = useState(false)
   const [initialDurationSeconds, setInitialDurationSeconds] = useState(25 * 60)
@@ -99,6 +101,11 @@ export default function SpinWheel() {
       const daily = localStorage.getItem(LS_DAILY_KEY) || localStorage.getItem('spinly_daily_tasks')
       const wheel = localStorage.getItem(LS_WHEEL_KEY) || localStorage.getItem('spinly_wheel_tasks')
       const completed = localStorage.getItem(LS_COMPLETED_KEY) || localStorage.getItem('spinly_completed_tasks')
+      const savedVoice = localStorage.getItem('decido_voice_mode')
+
+      if (savedVoice) {
+        setVoiceMode(savedVoice)
+      }
 
       if (daily) {
         const parsed = JSON.parse(daily)
@@ -635,6 +642,39 @@ export default function SpinWheel() {
     setWinner(null)
     setShowRerollModal(false)
     setSubtasks([])
+    playFocusChime(soundEnabled)
+    speakCoachMessage("Focus session started. Good luck! Let's lock in.", voiceMode)
+  }
+
+  const handleToggleTimer = () => {
+    if (isTimerRunning) {
+      flushUncommittedFocusTime(focusTask)
+      setIsTimerRunning(false)
+      playButtonSound(soundEnabled)
+      speakCoachMessage('Timer paused.', voiceMode)
+    } else {
+      setIsTimerRunning(true)
+      playButtonSound(soundEnabled)
+      playFocusChime(soundEnabled)
+      const isBreak = pomodoroMode === 'break5' || pomodoroMode === 'break15'
+      if (isBreak) {
+        speakCoachMessage('Break time started. Step away and recharge.', voiceMode)
+      } else {
+        speakCoachMessage("Focus session started. Good luck! Let's lock in.", voiceMode)
+      }
+    }
+  }
+
+  const handleVoiceChange = (mode) => {
+    setVoiceMode(mode)
+    try {
+      localStorage.setItem('decido_voice_mode', mode)
+    } catch {}
+    if (mode === 'female') {
+      speakCoachMessage('Female voice coach enabled.', 'female')
+    } else if (mode === 'male') {
+      speakCoachMessage('Male voice coach enabled.', 'male')
+    }
   }
 
   const changeTimerMode = (mode, seconds) => {
@@ -644,6 +684,13 @@ export default function SpinWheel() {
     setInitialDurationSeconds(seconds)
     setIsTimerRunning(false)
     playButtonSound(soundEnabled)
+    if (mode === 'break5' || mode === 'break15') {
+      speakCoachMessage('Switched to break mode. Take time to relax.', voiceMode)
+    } else if (mode === 'deep50') {
+      speakCoachMessage('50 minute deep focus mode selected.', voiceMode)
+    } else if (mode === 'focus25') {
+      speakCoachMessage('25 minute standard focus mode selected.', voiceMode)
+    }
   }
 
   const handleApplyCustomMinutes = (mins) => {
@@ -679,6 +726,13 @@ export default function SpinWheel() {
       setIsTimerRunning(false)
       playWinnerFanfare(soundEnabled)
       triggerConfetti()
+
+      const isBreak = pomodoroMode === 'break5' || pomodoroMode === 'break15'
+      if (isBreak) {
+        speakCoachMessage('Break is over! Time to start your next session.', voiceMode)
+      } else {
+        speakCoachMessage('Great job! Focus session completed. You crushed it.', voiceMode)
+      }
 
       // Record completed focus session for stats & streak!
       recordFocusSession({
@@ -1013,13 +1067,7 @@ export default function SpinWheel() {
             {/* Timer controls */}
             <div className="flex items-center justify-center gap-3 mt-5">
               <button
-                onClick={() => {
-                  if (isTimerRunning) {
-                    flushUncommittedFocusTime(focusTask)
-                  }
-                  setIsTimerRunning(!isTimerRunning)
-                  playButtonSound(soundEnabled)
-                }}
+                onClick={handleToggleTimer}
                 className={`px-6 py-2.5 rounded-2xl font-bold text-sm flex items-center gap-2 transition cursor-pointer shadow-lg ${
                   isTimerRunning
                     ? 'bg-amber-500 hover:bg-amber-400 text-slate-950'
@@ -1042,12 +1090,60 @@ export default function SpinWheel() {
                   setInitialDurationSeconds(defaultSecs)
                   setIsTimerRunning(false)
                   playButtonSound(soundEnabled)
+                  speakCoachMessage('Timer reset.', voiceMode)
                 }}
                 title="Reset timer"
                 className="p-2.5 rounded-2xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition cursor-pointer"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
+            </div>
+
+            {/* Voice Coach Controls */}
+            <div className="flex items-center justify-center gap-2 mt-4 pt-3 border-t border-white/[0.06]">
+              <span className="text-[11px] font-mono text-slate-400 flex items-center gap-1.5 uppercase tracking-wider">
+                <Mic className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Voice Coach:</span>
+              </span>
+              <div className="flex items-center gap-1 p-0.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-xs font-semibold">
+                <button
+                  type="button"
+                  onClick={() => handleVoiceChange('female')}
+                  className={`px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1 ${
+                    voiceMode === 'female'
+                      ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold shadow'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                  title="Female voice motivator"
+                >
+                  <span>Female</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleVoiceChange('male')}
+                  className={`px-2.5 py-1 rounded-lg transition cursor-pointer flex items-center gap-1 ${
+                    voiceMode === 'male'
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                  title="Male voice motivator"
+                >
+                  <span>Male</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleVoiceChange('off')}
+                  className={`px-2 py-1 rounded-lg transition cursor-pointer flex items-center gap-1 ${
+                    voiceMode === 'off'
+                      ? 'bg-white/15 text-slate-200 font-bold'
+                      : 'text-slate-500 hover:text-slate-300'
+                  }`}
+                  title="Mute voice coach"
+                >
+                  <MicOff className="w-3 h-3" />
+                  <span>Off</span>
+                </button>
+              </div>
             </div>
           </div>
 
