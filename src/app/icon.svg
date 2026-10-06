@@ -1,0 +1,47 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="decidoRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+
+    <linearGradient id="bladeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="bladeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#d946ef" />
+    </linearGradient>
+
+    <linearGradient id="bladeGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+
+    <linearGradient id="bladeGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+
+  {/* Outer track */}
+  <circle cx="50" cy="50" r="45" stroke="url(#decidoRingGrad)" stroke-width="4" stroke-dasharray="4 3" opacity="0.85" />
+  <circle cx="50" cy="50" r="41" stroke="url(#decidoRingGrad)" stroke-width="3" />
+
+  {/* 4 Spinner Blades */}
+  <path d="M 50 14 C 50 14, 62 26, 62 38 C 62 44, 56 50, 50 50 Z" fill="url(#bladeGrad1)" />
+  <path d="M 86 50 C 86 50, 74 62, 62 62 C 56 62, 50 50 Z" fill="url(#bladeGrad2)" />
+  <path d="M 50 86 C 50 86, 38 74, 38 62 C 38 56, 44 50, 50 50 Z" fill="url(#bladeGrad3)" />
+  <path d="M 14 50 C 14 50, 26 38, 38 38 C 44 38, 50 44, 50 50 Z" fill="url(#bladeGrad4)" />
+
+  {/* Outer Pointer Ticker at 12 o'clock */}
+  <polygon points="50,2 57,14 43,14" fill="#ec4899" />
+
+  {/* Center Bearing Hub */}
+  <circle cx="50" cy="50" r="14" fill="#070913" stroke="url(#decidoRingGrad)" stroke-width="2.5" />
+  <circle cx="50" cy="50" r="6" fill="#06b6d4" />
+  <circle cx="50" cy="50" r="2.5" fill="#ffffff" />
+</svg>

@@ -17,9 +17,12 @@ export const metadata = {
   title: "Decido — Spin to Decide",
   description: "The anti-procrastination decision engine. Stop overthinking, add your tasks, spin the wheel or flip a coin, and crush your goals with focus blocks. Built by Sagar.",
   icons: {
-    icon: "/logo.svg",
-    shortcut: "/logo.svg",
-    apple: "/logo.svg",
+    icon: [
+      { url: '/logo.svg?v=3', type: 'image/svg+xml' },
+      { url: '/icon.svg?v=3', type: 'image/svg+xml' }
+    ],
+    shortcut: '/logo.svg?v=3',
+    apple: '/logo.svg?v=3',
   },
 };
 

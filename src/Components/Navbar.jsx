@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Sparkles, Menu, X } from 'lucide-react'
@@ -17,6 +17,28 @@ const NAV_LINKS = [
 export default function Navbar() {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const logoWheelRef = useRef(null)
+
+  // Rotate navbar wheel continuously as page scrolls
+  useEffect(() => {
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (logoWheelRef.current) {
+            const scrollY = window.scrollY || window.pageYOffset || 0
+            const deg = (scrollY * 0.75) % 360
+            logoWheelRef.current.style.transform = `rotate(${deg}deg)`
+          }
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <header className="fixed top-6 left-0 right-0 z-50 flex flex-col items-center px-4">
@@ -28,7 +50,9 @@ export default function Navbar() {
           href="/" 
           className="flex items-center gap-2.5 group cursor-pointer"
         >
-          <DecidoLogo className="w-7 h-7" animated={true} />
+          <div ref={logoWheelRef} className="will-change-transform flex items-center justify-center shrink-0">
+            <DecidoLogo className="w-7 h-7" animated={true} />
+          </div>
 
           <span className="text-base font-black tracking-tight text-white group-hover:opacity-90">
             Decido<span className="text-cyan-400">.</span>
